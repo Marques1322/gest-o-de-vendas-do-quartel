@@ -49,8 +49,8 @@ function NovaVenda() {
     });
 
   const finalizar = () => {
-    if (!militarId) return toast.error("Selecione o militar.");
-    if (!itens.length) return toast.error("Adicione ao menos um produto.");
+    if (!militarId) { toast.error("Selecione o militar."); return; }
+    if (!itens.length) { toast.error("Adicione ao menos um produto."); return; }
     toast.success(`Venda de ${formatBRL(total)} registrada${pagamento === "fiado" ? " como fiado" : ""}.`);
     setCarrinho({});
     setMilitarId("");
