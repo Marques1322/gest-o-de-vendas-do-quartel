@@ -12,6 +12,11 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Plus } from "lucide-react";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/layout/app-sidebar";
+import { Button } from "@/components/ui/button";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -78,20 +83,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Gestão de Vendas" },
+      { name: "description", content: "Sistema de gestão de vendas da cantina do quartel." },
+      { property: "og:title", content: "Gestão de Vendas" },
+      { property: "og:description", content: "Sistema de gestão de vendas da cantina do quartel." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: appCss,
+        href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap",
       },
+      { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
@@ -103,7 +109,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <HeadContent />
       </head>
@@ -117,11 +123,31 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const hoje = new Date().toLocaleDateString("pt-BR", { weekday: "long", day: "2-digit", month: "long" });
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <SidebarProvider>
+        <div className="flex min-h-screen w-full">
+          <AppSidebar />
+          <div className="flex min-w-0 flex-1 flex-col">
+            <header className="sticky top-0 z-20 flex h-14 items-center gap-3 border-b bg-card/90 px-4 backdrop-blur">
+              <SidebarTrigger />
+              <div className="h-5 w-px bg-border" />
+              <p className="text-sm capitalize text-muted-foreground">{hoje}</p>
+              <div className="ml-auto">
+                <Button asChild size="sm">
+                  <Link to="/nova-venda"><Plus /> <span className="hidden sm:inline">Nova venda</span></Link>
+                </Button>
+              </div>
+            </header>
+            <main className="mx-auto w-full max-w-7xl flex-1 p-4 md:p-8">
+              <Outlet />
+            </main>
+          </div>
+        </div>
+      </SidebarProvider>
+      <Toaster richColors position="top-right" />
     </QueryClientProvider>
   );
 }

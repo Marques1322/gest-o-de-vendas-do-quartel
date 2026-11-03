@@ -10,33 +10,141 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ConfiguracoesRouteImport } from './routes/configuracoes'
+import { Route as FiadoRouteImport } from './routes/fiado'
+import { Route as FinanceiroRouteImport } from './routes/financeiro'
+import { Route as HistoricoRouteImport } from './routes/historico'
+import { Route as MilitaresRouteImport } from './routes/militares'
+import { Route as NovaVendaRouteImport } from './routes/nova-venda'
+import { Route as ProdutosRouteImport } from './routes/produtos'
+import { Route as RelatoriosRouteImport } from './routes/relatorios'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConfiguracoesRoute = ConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FiadoRoute = FiadoRouteImport.update({
+  id: '/fiado',
+  path: '/fiado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceiroRoute = FinanceiroRouteImport.update({
+  id: '/financeiro',
+  path: '/financeiro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HistoricoRoute = HistoricoRouteImport.update({
+  id: '/historico',
+  path: '/historico',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MilitaresRoute = MilitaresRouteImport.update({
+  id: '/militares',
+  path: '/militares',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NovaVendaRoute = NovaVendaRouteImport.update({
+  id: '/nova-venda',
+  path: '/nova-venda',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProdutosRoute = ProdutosRouteImport.update({
+  id: '/produtos',
+  path: '/produtos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RelatoriosRoute = RelatoriosRouteImport.update({
+  id: '/relatorios',
+  path: '/relatorios',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/fiado': typeof FiadoRoute
+  '/financeiro': typeof FinanceiroRoute
+  '/historico': typeof HistoricoRoute
+  '/militares': typeof MilitaresRoute
+  '/nova-venda': typeof NovaVendaRoute
+  '/produtos': typeof ProdutosRoute
+  '/relatorios': typeof RelatoriosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/fiado': typeof FiadoRoute
+  '/financeiro': typeof FinanceiroRoute
+  '/historico': typeof HistoricoRoute
+  '/militares': typeof MilitaresRoute
+  '/nova-venda': typeof NovaVendaRoute
+  '/produtos': typeof ProdutosRoute
+  '/relatorios': typeof RelatoriosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/fiado': typeof FiadoRoute
+  '/financeiro': typeof FinanceiroRoute
+  '/historico': typeof HistoricoRoute
+  '/militares': typeof MilitaresRoute
+  '/nova-venda': typeof NovaVendaRoute
+  '/produtos': typeof ProdutosRoute
+  '/relatorios': typeof RelatoriosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/configuracoes'
+    | '/fiado'
+    | '/financeiro'
+    | '/historico'
+    | '/militares'
+    | '/nova-venda'
+    | '/produtos'
+    | '/relatorios'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/configuracoes'
+    | '/fiado'
+    | '/financeiro'
+    | '/historico'
+    | '/militares'
+    | '/nova-venda'
+    | '/produtos'
+    | '/relatorios'
+  id:
+    | '__root__'
+    | '/'
+    | '/configuracoes'
+    | '/fiado'
+    | '/financeiro'
+    | '/historico'
+    | '/militares'
+    | '/nova-venda'
+    | '/produtos'
+    | '/relatorios'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ConfiguracoesRoute: typeof ConfiguracoesRoute
+  FiadoRoute: typeof FiadoRoute
+  FinanceiroRoute: typeof FinanceiroRoute
+  HistoricoRoute: typeof HistoricoRoute
+  MilitaresRoute: typeof MilitaresRoute
+  NovaVendaRoute: typeof NovaVendaRoute
+  ProdutosRoute: typeof ProdutosRoute
+  RelatoriosRoute: typeof RelatoriosRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +156,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/configuracoes': {
+      id: '/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/configuracoes'
+      preLoaderRoute: typeof ConfiguracoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fiado': {
+      id: '/fiado'
+      path: '/fiado'
+      fullPath: '/fiado'
+      preLoaderRoute: typeof FiadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/financeiro': {
+      id: '/financeiro'
+      path: '/financeiro'
+      fullPath: '/financeiro'
+      preLoaderRoute: typeof FinanceiroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/historico': {
+      id: '/historico'
+      path: '/historico'
+      fullPath: '/historico'
+      preLoaderRoute: typeof HistoricoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/militares': {
+      id: '/militares'
+      path: '/militares'
+      fullPath: '/militares'
+      preLoaderRoute: typeof MilitaresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nova-venda': {
+      id: '/nova-venda'
+      path: '/nova-venda'
+      fullPath: '/nova-venda'
+      preLoaderRoute: typeof NovaVendaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/produtos': {
+      id: '/produtos'
+      path: '/produtos'
+      fullPath: '/produtos'
+      preLoaderRoute: typeof ProdutosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/relatorios': {
+      id: '/relatorios'
+      path: '/relatorios'
+      fullPath: '/relatorios'
+      preLoaderRoute: typeof RelatoriosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ConfiguracoesRoute: ConfiguracoesRoute,
+  FiadoRoute: FiadoRoute,
+  FinanceiroRoute: FinanceiroRoute,
+  HistoricoRoute: HistoricoRoute,
+  MilitaresRoute: MilitaresRoute,
+  NovaVendaRoute: NovaVendaRoute,
+  ProdutosRoute: ProdutosRoute,
+  RelatoriosRoute: RelatoriosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
