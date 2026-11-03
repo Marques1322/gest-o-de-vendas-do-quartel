@@ -23,7 +23,7 @@ function Pref({ label, desc, on }: { label: string; desc: string; on?: boolean }
   return (
     <div className="flex items-center justify-between gap-4 py-3">
       <div><p className="text-sm font-medium">{label}</p><p className="text-xs text-muted-foreground">{desc}</p></div>
-      <Switch defaultChecked={on} />
+      <Switch defaultChecked={on ?? false} />
     </div>
   );
 }
